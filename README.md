@@ -1,6 +1,6 @@
 # Electron FPGA Toolchain wrapper
 
-Wrapps fpga tools with a js api.
+Wrapps fpga tools with a js api for usage with `electron`.
 
 ## Getting Started
 Synthesize and flash example.
@@ -26,6 +26,16 @@ hx1kpcf.setIo('led5', '8');
 
 const flow1k = new Flow(new Triple('ice40-hx1k-tq144'));
 flow1k.flow('top.v', 'build/hx1k/top.bin', 'top', pcf);
+```
+
+Or run a testbench.
+
+```ts
+import { Sim } from 'electron-fpga'
+
+// Optionally set the iverilog vpi module search path.
+const sim = new Sim(['/opt/nextpnr/lib/ivl'])
+sim.sim('tb.v', 'build/sim.out')
 ```
 
 ## License
