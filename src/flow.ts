@@ -1,6 +1,7 @@
 import * as path from 'path'
 import { Triple } from './triple'
 import { Synth, Pnr, Pack, Prog, Time } from './tools'
+import { Pcf } from './pcf'
 
 export class Flow {
     protected _synth: Synth | undefined
@@ -21,10 +22,17 @@ export class Flow {
         return path.join(builddir, parts.join('.'))
     }
 
-    flow(input: string, output: string, top: string, pcf: string): void {
+    flow(input: string, output: string, top: string, pcf: string | Pcf): void {
         const tmpBase = this._getTmpFileBase(output)
         const synth_output = tmpBase + '.json'
         const pnr_output = tmpBase + '.asc'
+
+        if (pcf instanceof Pcf) {
+            const pcf_output = tmpBase + '.pcf'
+            pcf.write(pcf_output)
+            pcf = pcf_output
+        }
+
         this.synth(input, synth_output, top)
         this.pnr(synth_output, pnr_output, pcf)
         this.pack(pnr_output, output)
