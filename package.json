@@ -5,5 +5,12 @@
   "main": "lib/index.js",
   "repository": "https://github.com/electron-lang/electron-fpga",
   "author": "David Craven <david@craven.ch>",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "prepare": "tsc"
+  },
+  "files": [ "src", "lib" ],
+  "devDependencies": {
+    "typescript": "^3.0.1"
+  }
 }
