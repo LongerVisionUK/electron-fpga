@@ -1,6 +1,6 @@
 {
   "name": "electron-fpga",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wrapps foss fpga toolchain cli utilities.",
   "main": "lib/index.js",
   "repository": "https://github.com/electron-lang/electron-fpga",
