@@ -10,7 +10,7 @@ export class Pcf {
     }
 
     write(file: string): void {
-        const pcfStr = this.io.map((pin, pad) => {
+        const pcfStr = this.io.map(([pin, pad]) => {
             return `set_io ${pin} ${pad}`
         }).join('\n')
         fs.writeFileSync(file, pcfStr)
