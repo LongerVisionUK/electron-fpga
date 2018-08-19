@@ -9,7 +9,7 @@ Synthesize and flash example.
 import { Flow, Triple, Pcf } from 'electron-fpga'
 
 const flow8k = new Flow(new Triple('ice40-hx8k-ct256'))
-flow8k.flow('top.v', 'build/hx8k/top.bin', 'top', 'hx8k.pcf')
+flow8k.flow(['top.v'], 'build/hx8k/top.bin', 'top', 'hx8k.pcf')
 flow8k.time()
 flow8k.prog('build/hx8k/top.bin')
 ```
@@ -25,7 +25,7 @@ hx1kpcf.setIo('led4', '7');
 hx1kpcf.setIo('led5', '8');
 
 const flow1k = new Flow(new Triple('ice40-hx1k-tq144'));
-flow1k.flow('top.v', 'build/hx1k/top.bin', 'top', pcf);
+flow1k.flow(['top.v'], 'build/hx1k/top.bin', 'top', pcf);
 ```
 
 Or run a testbench.
@@ -34,8 +34,12 @@ Or run a testbench.
 import { Sim } from 'electron-fpga'
 
 // Optionally set the iverilog vpi module search path.
-const sim = new Sim(['/opt/nextpnr/lib/ivl'])
-sim.sim('tb.v', 'build/sim.out')
+const sim = new Sim({
+  triple: new Triple('ice40-hx8k-ct256'), // load simulation models for fpga cells
+  vpiSearchPath: [ '/opt/iverilog/lib/ivl' ], // search for vpi modules here
+  vpiModules: [ 'moduleName' ], // Load vpi module 'moduleName'
+});
+sim.sim(['tb.v'], 'build/sim.out');
 ```
 
 ## License
