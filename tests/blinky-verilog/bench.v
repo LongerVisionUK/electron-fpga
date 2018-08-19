@@ -1,15 +1,22 @@
-`include "top.v"
-
 module tb();
+   parameter PERIOD = 1;
+   parameter TIME = 100;
+
    reg clk;
 
    top dut(.hwclk(clk));
 
-   always begin
-      clk = 1;
-      #5;
+   initial begin
       clk = 0;
-      #5;
+   end
+
+   always begin
+      #(PERIOD) clk = ~clk;
+   end
+
+   initial begin
+      #(TIME);
+      $finish;
    end
 
    initial begin

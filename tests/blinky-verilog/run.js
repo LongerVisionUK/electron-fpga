@@ -20,7 +20,7 @@ const hx8kbin = path.join(hx8kdir, 'top.bin');
 const hx8kpcf = path.join(__dirname, 'pinmap.pcf');
 
 const flow8k = new Flow(new Triple('ice40-hx8k-ct256'));
-flow8k.flow(input, hx8kbin, top, hx8kpcf);
+flow8k.flow([input], hx8kbin, top, hx8kpcf);
 
 
 /* HX1K flow */
@@ -42,4 +42,4 @@ hx1kpcf.setIo('led7', 'B3');
 hx1kpcf.setIo('led8', 'C3');
 
 const flow1k = new Flow(new Triple('ice40-hx8k-ct256'));
-flow1k.flow(input, hx1kbin, top, hx1kpcf);
+flow1k.flow([input], hx1kbin, top, hx1kpcf);
