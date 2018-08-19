@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "prepare": "tsc",
-    "test": "node tests/blinky-verilog/run.js"
+    "test": "node tests/blinky-verilog/run.js && node tests/blinky-verilog/run_tb.js"
   },
   "files": [
     "src",
