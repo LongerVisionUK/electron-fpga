@@ -1,5 +1,6 @@
 import { execSync } from 'child_process'
 import { Triple } from '../triple'
+import { getRelPath } from '../relpath'
 
 export class Synth {
     static supportedFamilies = [
@@ -16,5 +17,12 @@ export class Synth {
         execSync(`yosys -p 'synth_${this.triple.family} ` +
                  `-top ${top} -json ${output}' ${input.join(' ')}`,
                 { stdio: [ 0, 1, 2 ] })
+    }
+
+    cellsPath(): string {
+        return getRelPath('yosys', `../share/yosys/${this.triple.family}/cells_sim.v`)
+        //return spawnSync('yosys-config', [
+        //    `--datdir/${this.triple.family}/cells_sim.v`
+        //]).stdout
     }
 }
