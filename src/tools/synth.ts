@@ -12,9 +12,9 @@ export class Synth {
         }
     }
 
-    synth(input: string, output: string, top: string): void {
+    synth(input: string[], output: string, top: string): void {
         execSync(`yosys -p 'synth_${this.triple.family} ` +
-                 `-top ${top} -json ${output}' ${input}`,
+                 `-top ${top} -json ${output}' ${input.join(' ')}`,
                 { stdio: [ 0, 1, 2 ] })
     }
 }

@@ -5,13 +5,13 @@ export class Sim {
     constructor(readonly searchPath: string[] = [],
                 readonly modules: string[] = []) {}
 
-    sim(input: string, output: string): void {
+    sim(input: string[], output: string): void {
         this.iverilog(input, output)
         this.vvp(output)
     }
 
-    iverilog(input: string, output: string): void {
-        execSync(`iverilog -o ${output} ${input}`)
+    iverilog(input: string[], output: string): void {
+        execSync(`iverilog -o ${output} ${input.join(' ')}`)
     }
 
     vvp(input: string): void {

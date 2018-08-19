@@ -22,7 +22,7 @@ export class Flow {
         return path.join(builddir, parts.join('.'))
     }
 
-    flow(input: string, output: string, top: string, pcf: string | Pcf): void {
+    flow(input: string[], output: string, top: string, pcf: string | Pcf): void {
         const tmpBase = this._getTmpFileBase(output)
         const synth_output = tmpBase + '.json'
         const pnr_output = tmpBase + '.asc'
@@ -38,7 +38,7 @@ export class Flow {
         this.pack(pnr_output, output)
     }
 
-    synth(input: string, output: string, top: string): void {
+    synth(input: string[], output: string, top: string): void {
         if (!this._synth) {
             this._synth = new Synth(this.triple)
         }
