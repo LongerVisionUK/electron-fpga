@@ -12,6 +12,6 @@ export class Time {
 
     time(file: string): void {
         execSync(`iceprog -d ${this.triple.device} ` +
-                 `-P ${this.triple.package} ${file}`, { stdio: [ 0, 1, 2 ] })
+                 `-P ${this.triple.package} '${file}'`, { stdio: [ 0, 1, 2 ] })
     }
 }

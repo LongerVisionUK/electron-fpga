@@ -36,6 +36,6 @@ export class Prog {
         if (options.offset) {
             strOptions += `-o ${options.offset}`
         }
-        execSync(`iceprog ${strOptions} ${file}`, { stdio: [ 0, 1, 2 ] })
+        execSync(`iceprog ${strOptions} '${file}'`, { stdio: [ 0, 1, 2 ] })
     }
 }

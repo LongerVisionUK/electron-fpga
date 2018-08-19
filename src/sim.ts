@@ -23,7 +23,8 @@ export class Sim {
             const synth = new Synth(this.options.triple)
             input.push(synth.cellsPath())
         }
-        execSync(`iverilog -s ${top} -o ${output} ${input.join(' ')}`)
+        const inputs = input.map((input) => `'${input}'`).join(' ')
+        execSync(`iverilog -s '${top}' -o '${output}' ${inputs}`)
     }
 
     vvp(input: string): void {

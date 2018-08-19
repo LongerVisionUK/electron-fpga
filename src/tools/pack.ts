@@ -11,6 +11,6 @@ export class Pack {
     }
 
     pack(input: string, output: string): void {
-        execSync(`icepack ${input} ${output}`, { stdio: [0, 1, 2] })
+        execSync(`icepack '${input}' '${output}'`, { stdio: [0, 1, 2] })
     }
 }

@@ -14,8 +14,9 @@ export class Synth {
     }
 
     synth(input: string[], output: string, top: string): void {
+        const inputs = input.map((input) => `'${input}'`).join(' ')
         execSync(`yosys -p 'synth_${this.triple.family} ` +
-                 `-top ${top} -json ${output}' ${input.join(' ')}`,
+                 `-top ${top} -json ${output}' ${inputs}`,
                 { stdio: [ 0, 1, 2 ] })
     }
 

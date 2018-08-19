@@ -16,9 +16,9 @@ export class Pnr {
         execSync(`nextpnr-${this.triple.family} ` +
                  `--${this.triple.device} ` +
                  `--package ${this.triple.package} ` +
-                 `--json ${input} ` +
-                 `--pcf ${pcf} ` +
-                 `--asc ${output}`,
+                 `--json '${input}' ` +
+                 `--pcf '${pcf}' ` +
+                 `--asc '${output}'`,
                  { stdio: [ 0, 1, 2 ] })
     }
 }
